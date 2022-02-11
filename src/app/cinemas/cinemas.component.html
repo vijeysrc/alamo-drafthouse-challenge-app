@@ -1,5 +1,5 @@
 <div class="cmp-cinemas">
-  <div class="cmp-cinemas__contents">
+  <div *ngIf="!filmSlug" class="cmp-cinemas__contents">
     <div class="cmp-cinemas__title">Find a movie</div>
     <div class="cmp-cinemas__sub-title">Select Theater</div>
     <ul class="cmp-cinemas__cinema-btns list-unstyled">
@@ -33,5 +33,24 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div *ngIf="filmSlug" class="cmp-cinemas__contents">
+    <div class="cmp-cinemas__title">Find a show time</div>
+    <div class="cmp-cinemas__sub-title">
+      Choose a time for
+      <span class="fw-bold">{{ getFilmNameByFilmSlug(filmSlug) }}</span>
+      at
+      <span class="fw-bold">{{ getCinemaNameById(cinemaId) }}</span>
+    </div>
+    <ul class="list-unstyled">
+      <li
+        class="cmp-cinemas__film-item"
+        *ngFor="
+          let sessionItem of getSessionByCinemaIdFilmSlug(cinemaId, filmSlug)
+        "
+      >
+        {{ sessionItem.showTimeClt }}
+      </li>
+    </ul>
   </div>
 </div>

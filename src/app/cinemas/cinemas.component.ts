@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { DataService } from '../data.service';
 import { ICinema, IFilm, ISimpleFilmItem, ISession } from 'src/interfaces';
 
@@ -15,6 +14,7 @@ export class CinemasComponent implements OnInit {
   sessions: ISession[] = [];
   cityId: string = '';
   cinemaId: string = '';
+  filmSlug: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -32,9 +32,11 @@ export class CinemasComponent implements OnInit {
   updateWithParams(): void {
     const cityId = this.route.snapshot.paramMap.get('cityId') as string;
     const cinemaId = this.route.snapshot.paramMap.get('cinemaId') as string;
+    const filmSlug = this.route.snapshot.paramMap.get('filmSlug') as string;
 
     this.cityId = cityId;
     this.cinemaId = cinemaId;
+    this.filmSlug = filmSlug;
   }
 
   getCinemasByCity(): void {
@@ -48,6 +50,12 @@ export class CinemasComponent implements OnInit {
   getCinemaNameById(id: string): string {
     const cinema: undefined | ICinema = this.cinemas.find(cinema => cinema.id === id)
     if (cinema) return cinema.name
+    return ""
+  }
+
+  getFilmNameByFilmSlug(slug: string): string {
+    const film: undefined | IFilm = this.films.find(film => film.slug === slug)
+    if (film) return film.title
     return ""
   }
 
@@ -79,6 +87,13 @@ export class CinemasComponent implements OnInit {
       )
 
     return films;
+  }
+
+  getSessionByCinemaIdFilmSlug(cinemaId: string, filmSlug: string): any[] {
+    const items = this.sessions
+      .filter(session => session.cinemaId === cinemaId && session.filmSlug === filmSlug)
+
+    return items;
   }
 
 }
