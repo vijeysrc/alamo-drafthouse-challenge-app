@@ -42,6 +42,7 @@
   @include media-breakpoint-down(lg) {
     &__contents {
       padding: 32px 43px;
+      width: 85%;
     }
   }
 
@@ -63,7 +64,18 @@
     }
 
     @include media-breakpoint-down(md) {
-      li {
+      li,
+      li:nth-of-type(3n),
+      li:nth-of-type(3n + 1) {
+        width: 48%;
+        margin: 1%;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      li,
+      li:nth-of-type(3n),
+      li:nth-of-type(3n + 1) {
         width: 100%;
         margin: 1% 0;
       }
