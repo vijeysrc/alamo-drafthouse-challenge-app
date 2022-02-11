@@ -12,9 +12,16 @@ interface IFilm {
   slug: string;
 }
 
+interface ISimpleFilmItem {
+  filmName: string;
+  filmSlug: string;
+}
+
 interface ISession {
   sessionId: string;
   cinemaId: string;
+  filmName: string;
+  filmSlug: string;
 }
 
 interface ICityResponse {
@@ -36,6 +43,7 @@ export {
   ICity,
   ICityResponse,
   IFilm,
+  ISimpleFilmItem,
   IMarket,
   ISession
 }

@@ -62,4 +62,21 @@
       }
     }
   }
+
+  &__film-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid #090909;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 15px 15px 15px 24px;
+    margin-bottom: 16px;
+    a {
+      text-decoration: none;
+      color: #090909;
+    }
+  }
 }

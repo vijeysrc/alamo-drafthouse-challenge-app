@@ -21,6 +21,17 @@
         Films playing at
         <span class="fw-bold">{{ getCinemaNameById(cinemaId) }}</span>
       </div>
+      <ul class="list-unstyled">
+        <li
+          class="cmp-cinemas__film-item"
+          *ngFor="let filmItem of getFilmsByCinemaId(cinemaId)"
+        >
+          <a routerLink="/{{ cityId }}/{{ cinemaId }}/{{ filmItem.filmSlug }}">
+            {{ filmItem.filmName }}
+          </a>
+          <img src="/assets/svg/cart.png" alt="Cart" />
+        </li>
+      </ul>
     </div>
   </div>
 </div>

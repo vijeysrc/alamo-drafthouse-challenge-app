@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DataService } from '../data.service';
-import { ICinema, IFilm } from 'src/interfaces';
+import { ICinema, IFilm, ISimpleFilmItem, ISession } from 'src/interfaces';
 
 @Component({
   selector: 'app-cinemas',
@@ -12,6 +12,7 @@ import { ICinema, IFilm } from 'src/interfaces';
 export class CinemasComponent implements OnInit {
   cinemas: ICinema[] = [];
   films: IFilm[] = [];
+  sessions: ISession[] = [];
   cityId: string = '';
   cinemaId: string = '';
 
@@ -37,9 +38,10 @@ export class CinemasComponent implements OnInit {
   }
 
   getCinemasByCity(): void {
-    this.dataService.getCinemas(this.cityId).subscribe(({cinemas, films}) => {
+    this.dataService.getCinemas(this.cityId).subscribe(({cinemas, films, sessions}) => {
       this.cinemas = cinemas;
       this.films = films;
+      this.sessions = sessions;
     })
   }
 
@@ -47,6 +49,36 @@ export class CinemasComponent implements OnInit {
     const cinema: undefined | ICinema = this.cinemas.find(cinema => cinema.id === id)
     if (cinema) return cinema.name
     return ""
+  }
+
+  getFilmsByCinemaId(cinemaId: string): any[] {
+    const {films } = this.sessions
+      .filter(session => session.cinemaId === cinemaId)
+      .map(item => ({filmName: item.filmName, filmSlug: item.filmSlug}))
+      .sort(function (x, y){
+        if (x.filmSlug < y.filmSlug) {return -1;}
+        if (x.filmSlug > y.filmSlug) {return 1;}
+        return 0;
+      })
+      .reduce(
+        (acc, curr) => {
+          const {temp, films} = acc;
+          const {filmName, filmSlug} = curr;
+
+          if (temp[filmSlug]) {
+            return ({temp, films});
+          } else {
+            temp[filmSlug] = filmName;
+            return ({
+              temp,
+              films: [...films, {filmName, filmSlug}]
+            })
+          }
+        },
+        {temp: {}, films: []} as {temp: any; films: ISimpleFilmItem[] }
+      )
+
+    return films;
   }
 
 }
