@@ -53,9 +53,21 @@ export class CinemasComponent implements OnInit {
     return ""
   }
 
+  getFilmByFilmSlug(slug: string): IFilm | undefined {
+    const film = this.films.find(film => film.slug === slug)
+    if (film) return film
+    return undefined
+  }
+
   getFilmNameByFilmSlug(slug: string): string {
-    const film: undefined | IFilm = this.films.find(film => film.slug === slug)
+    const film: undefined | IFilm = this.getFilmByFilmSlug(slug)
     if (film) return film.title
+    return ""
+  }
+
+  getFilmImageByFilmSlug(slug: string): string {
+    const film: undefined | IFilm = this.getFilmByFilmSlug(slug)
+    if (film) return film.landscapeHeroImage
     return ""
   }
 

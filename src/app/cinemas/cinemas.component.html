@@ -42,6 +42,12 @@
       at
       <span class="fw-bold">{{ getCinemaNameById(cinemaId) }}</span>
     </div>
+    <img
+      *ngIf="getFilmImageByFilmSlug(filmSlug)"
+      src="{{ getFilmImageByFilmSlug(filmSlug) }}"
+      width="100%"
+      height="100%"
+    />
     <ul class="list-unstyled">
       <li
         class="cmp-show-item"

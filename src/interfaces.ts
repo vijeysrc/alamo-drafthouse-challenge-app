@@ -10,6 +10,7 @@ interface IMarket {
 interface IFilm {
   title: string;
   slug: string;
+  landscapeHeroImage: string;
 }
 
 interface ISimpleFilmItem {
