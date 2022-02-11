@@ -38,6 +38,10 @@
     box-shadow: 0px 2px 4px rgba(24, 17, 3, 0.14),
       0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(24, 17, 3, 0.2);
     border-radius: 4px;
+
+    hr {
+      margin: 0.25rem 0;
+    }
   }
   @include media-breakpoint-down(lg) {
     &__contents {

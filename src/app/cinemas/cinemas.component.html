@@ -53,8 +53,10 @@
           {{ showTimeInfo.businessDateClt }}
         </div>
         <hr />
-        <ul class="list-unstyled">
+        <ul class="list-unstyled mb-5">
           <li *ngFor="let showItem of showTimeInfo.data" class="mb-3">
+            <span class="fw-bold">Screen Number:</span>
+            {{ showItem.screenNumber }} <span class="fw-bold">at</span>
             {{ showItem.showTimeClt.split("T")[1] }}
           </li>
         </ul>
