@@ -123,16 +123,21 @@
       width: 100%;
     }
 
+    svg {
+      height: 38px;
+      width: 18px;
+      fill: #090909;
+    }
+
     &:hover {
       background-color: #090909;
       a {
         color: #f0b323;
       }
-    }
 
-    img {
-      height: 18px;
-      width: 18px;
+      svg {
+        fill: #f0b323;
+      }
     }
   }
 }
