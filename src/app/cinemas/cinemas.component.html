@@ -4,13 +4,18 @@
     <div class="cmp-cinemas__sub-title">Select Theater</div>
     <ul class="cmp-cinemas__cinema-btns list-unstyled">
       <li *ngFor="let cinema of cinemas">
-        <button
-          type="button"
-          class="btn btn-outline-dark w-100 text-nowrap fw-bold"
+        <a
+          routerLink="/{{ cityId }}/{{ cinema.id }}"
+          class="btn w-100 text-uppercase text-nowrap fw-bold"
+          [ngClass]="{
+            'btn-primary': cinemaId === cinema.id,
+            'btn-outline-dark': cinemaId !== cinema.id
+          }"
         >
           {{ cinema.name }}
-        </button>
+        </a>
       </li>
     </ul>
+    <div *ngIf="cinemaId">Content to render when condition is true.</div>
   </div>
 </div>

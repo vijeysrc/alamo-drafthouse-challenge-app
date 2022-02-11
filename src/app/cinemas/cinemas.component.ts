@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DataService } from '../data.service';
 import { ICinema, IFilm } from 'src/interfaces';
@@ -12,19 +12,32 @@ import { ICinema, IFilm } from 'src/interfaces';
 export class CinemasComponent implements OnInit {
   cinemas: ICinema[] = [];
   films: IFilm[] = [];
+  cityId: string = '';
+  cinemaId: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private location: Location) { }
+    private router: Router) {
+      this.router.events.subscribe(() => {
+        this.updateWithParams();
+      })
+    }
 
   ngOnInit(): void {
-    this.getCinemasByCity()
+    this.getCinemasByCity();
+  }
+
+  updateWithParams(): void {
+    const cityId = this.route.snapshot.paramMap.get('cityId') as string;
+    const cinemaId = this.route.snapshot.paramMap.get('cinemaId') as string;
+
+    this.cityId = cityId;
+    this.cinemaId = cinemaId;
   }
 
   getCinemasByCity(): void {
-    const cityId = this.route.snapshot.paramMap.get('cityId') as string;
-    this.dataService.getCinemas(cityId).subscribe(({cinemas, films}) => {
+    this.dataService.getCinemas(this.cityId).subscribe(({cinemas, films}) => {
       this.cinemas = cinemas;
       this.films = films;
     })

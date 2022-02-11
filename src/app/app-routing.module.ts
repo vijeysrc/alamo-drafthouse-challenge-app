@@ -4,6 +4,7 @@ import { CinemasComponent } from './cinemas/cinemas.component';
 
 const routes: Routes = [
   { path: ':cityId', component: CinemasComponent },
+  { path: ':cityId/:cinemaId', component: CinemasComponent },
   { path: '', redirectTo: '/austin', pathMatch: 'full' },
 ];
 
