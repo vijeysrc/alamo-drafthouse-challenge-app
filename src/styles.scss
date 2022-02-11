@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-html {
+@font-face {
+  font-family: FuturaPT;
+  src: url(assets/fonts/FuturaPTBook.otf) format("opentype");
+}
+@font-face {
+  font-family: FuturaPT;
+  font-weight: bold;
+  src: url(assets/fonts/FuturaPTBold.otf) format("opentype");
+}
+
+html,
+body {
   background-color: #f3f3f3;
+  font-family: FuturaPT;
 }
