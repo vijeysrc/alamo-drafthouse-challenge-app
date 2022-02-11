@@ -16,6 +16,11 @@
         </a>
       </li>
     </ul>
-    <div *ngIf="cinemaId">Content to render when condition is true.</div>
+    <div *ngIf="cinemaId">
+      <div class="cmp-cinemas__sub-title">
+        Films playing at
+        <span class="fw-bold">{{ getCinemaNameById(cinemaId) }}</span>
+      </div>
+    </div>
   </div>
 </div>

@@ -43,4 +43,10 @@ export class CinemasComponent implements OnInit {
     })
   }
 
+  getCinemaNameById(id: string): string {
+    const cinema: undefined | ICinema = this.cinemas.find(cinema => cinema.id === id)
+    if (cinema) return cinema.name
+    return ""
+  }
+
 }
