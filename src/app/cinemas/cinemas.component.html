@@ -44,12 +44,20 @@
     </div>
     <ul class="list-unstyled">
       <li
-        class="cmp-cinemas__film-item"
+        class="cmp-show-item"
         *ngFor="
-          let sessionItem of getSessionByCinemaIdFilmSlug(cinemaId, filmSlug)
+          let showTimeInfo of getSessionByCinemaIdFilmSlug(cinemaId, filmSlug)
         "
       >
-        {{ sessionItem.showTimeClt }}
+        <div class="fw-bold text-center">
+          {{ showTimeInfo.businessDateClt }}
+        </div>
+        <hr />
+        <ul class="list-unstyled">
+          <li *ngFor="let showItem of showTimeInfo.data" class="mb-3">
+            {{ showItem.showTimeClt.split("T")[1] }}
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

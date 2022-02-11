@@ -22,6 +22,7 @@ interface ISession {
   cinemaId: string;
   filmName: string;
   filmSlug: string;
+  businessDateClt: string;
 }
 
 interface ICityResponse {
