@@ -1,0 +1,40 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.cmp-cinemas {
+  position: relative;
+
+  &__contents {
+    position: absolute;
+    top: -64px;
+    left: 0;
+    right: 0;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    background-color: #fff;
+  }
+  &__cinema-btns {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 30%;
+      margin: 1%;
+    }
+    li:nth-of-type(3n) {
+      margin-right: 0;
+    }
+
+    li:nth-of-type(3n + 1) {
+      margin-left: 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      li {
+        outline: 1px solid red;
+      }
+    }
+  }
+}

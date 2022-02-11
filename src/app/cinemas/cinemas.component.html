@@ -1,1 +1,13 @@
-<p>cinemas works!</p>
+<div class="cmp-cinemas">
+  <div class="cmp-cinemas__contents">
+    <h1>Find a movie</h1>
+    <p>Select Theater</p>
+    <ul class="cmp-cinemas__cinema-btns list-unstyled">
+      <li *ngFor="let cinema of cinemas">
+        <button type="button" class="btn btn-outline-dark w-100 text-nowrap">
+          {{ cinema.name }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

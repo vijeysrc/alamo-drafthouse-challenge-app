@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DataService } from '../data.service';
+import { ICinema, IFilm } from 'src/interfaces';
 
 @Component({
   selector: 'app-cinemas',
@@ -9,6 +10,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./cinemas.component.scss']
 })
 export class CinemasComponent implements OnInit {
+  cinemas: ICinema[] = [];
+  films: IFilm[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +24,10 @@ export class CinemasComponent implements OnInit {
 
   getCinemasByCity(): void {
     const cityId = this.route.snapshot.paramMap.get('cityId') as string;
-    this.dataService.getCinemas(cityId).subscribe(res => console.log(res))
+    this.dataService.getCinemas(cityId).subscribe(({cinemas, films}) => {
+      this.cinemas = cinemas;
+      this.films = films;
+    })
   }
 
 }
