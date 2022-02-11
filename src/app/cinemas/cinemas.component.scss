@@ -66,6 +66,7 @@
   &__film-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     text-transform: uppercase;
     font-weight: bold;
@@ -77,6 +78,8 @@
     a {
       text-decoration: none;
       color: #090909;
+      display: block;
+      width: 100%;
     }
 
     &:hover {
@@ -84,6 +87,11 @@
       a {
         color: #f0b323;
       }
+    }
+
+    img {
+      height: 18px;
+      width: 18px;
     }
   }
 }
