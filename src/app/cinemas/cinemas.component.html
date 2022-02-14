@@ -17,7 +17,9 @@
       <ul class="list-unstyled">
         <li
           class="cmp-cinemas__film-item"
-          *ngFor="let filmItem of getFilmsByCinemaId(cinemaId)"
+          *ngFor="
+            let filmItem of dataService.getFilmsByCinemaId(dataService.cinemaId)
+          "
         >
           <a routerLink="/{{ cityId }}/{{ cinemaId }}/{{ filmItem.filmSlug }}">
             {{ filmItem.filmName }}
@@ -44,7 +46,9 @@
       Choose a time for
       <span class="fw-bold">{{ getFilmNameByFilmSlug(filmSlug) }}</span>
       at
-      <span class="fw-bold">{{ getCinemaNameById(cinemaId) }}</span>
+      <span class="fw-bold">{{
+        dataService.getCinemaNameById(dataService.cinemaId)
+      }}</span>
     </div>
     <img
       *ngIf="getFilmImageByFilmSlug(filmSlug)"

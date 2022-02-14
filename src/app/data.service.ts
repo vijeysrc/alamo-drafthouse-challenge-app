@@ -6,7 +6,8 @@ import {
   ICity,
   ICityResponse,
   IFilm,
-  ISession
+  ISession,
+  ISimpleFilmItem
 } from '../interfaces'
 
 const getBaseUrl = (city: String) => '/assets/data/mock.json' // `https://drafthouse.com/s/mother/v1/page/market/main/${city}`
@@ -69,6 +70,36 @@ export class DataService {
     const cinema: undefined | ICinema = this.cinemas.find(cinema => cinema.id === id)
     if (cinema) return cinema.name
     return ""
+  }
+
+  getFilmsByCinemaId(cinemaId: string): any[] {
+    const {films } = this.sessions
+      .filter(session => session.cinemaId === cinemaId)
+      .map(item => ({filmName: item.filmName, filmSlug: item.filmSlug}))
+      .sort(function (x, y){
+        if (x.filmSlug < y.filmSlug) {return -1;}
+        if (x.filmSlug > y.filmSlug) {return 1;}
+        return 0;
+      })
+      .reduce(
+        (acc, curr) => {
+          const {temp, films} = acc;
+          const {filmName, filmSlug} = curr;
+
+          if (temp[filmSlug]) {
+            return ({temp, films});
+          } else {
+            temp[filmSlug] = filmName;
+            return ({
+              temp,
+              films: [...films, {filmName, filmSlug}]
+            })
+          }
+        },
+        {temp: {}, films: []} as {temp: any; films: ISimpleFilmItem[] }
+      )
+
+    return films;
   }
 
   getCinemas(): Observable<ICity> {
