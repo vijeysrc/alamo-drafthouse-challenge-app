@@ -2,18 +2,11 @@
   <div *ngIf="!filmSlug" class="cmp-cinemas__contents">
     <div class="cmp-cinemas__title">Find a movie</div>
     <div class="cmp-cinemas__sub-title">Select Theater</div>
-    <ul class="cmp-cinemas__cinema-btns list-unstyled">
-      <li
-        *ngFor="let cinema of cinemas"
-        [ngClass]="{
-          'cinema-selected': cinemaId === cinema.id
-        }"
-      >
-        <a routerLink="/{{ cityId }}/{{ cinema.id }}">
-          {{ cinema.name }}
-        </a>
-      </li>
-    </ul>
+    <cinema-list
+      [cityId]="cityId"
+      [cinemas]="cinemas"
+      [chosenCinemaId]="cinemaId"
+    ></cinema-list>
     <div *ngIf="cinemaId">
       <div class="cmp-cinemas__sub-title">
         Films playing at

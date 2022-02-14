@@ -1,0 +1,59 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.cmp-cinema-list {
+  &__cinema-btns {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 64px;
+
+    a {
+      text-decoration: none;
+      color: #090909;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    li {
+      border: 1px solid #090909;
+      border-radius: 4px;
+      box-sizing: border-box;
+      padding: 15px;
+      width: 32%;
+      margin: 1%;
+      &.cinema-selected,
+      &:hover {
+        background-color: #f0b323;
+      }
+    }
+    li:nth-of-type(3n) {
+      margin-right: 0;
+    }
+
+    li:nth-of-type(3n + 1) {
+      margin-left: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      li,
+      li:nth-of-type(3n),
+      li:nth-of-type(3n + 1) {
+        width: 48%;
+        margin: 1%;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      li,
+      li:nth-of-type(3n),
+      li:nth-of-type(3n + 1) {
+        width: 100%;
+        margin: 1% 0;
+      }
+    }
+  }
+}

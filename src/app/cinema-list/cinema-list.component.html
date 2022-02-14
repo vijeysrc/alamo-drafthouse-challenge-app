@@ -1,0 +1,12 @@
+<ul class="cmp-cinema-list__cinema-btns list-unstyled">
+  <li
+    *ngFor="let cinema of cinemas"
+    [ngClass]="{
+      'cinema-selected': chosenCinemaId === cinema.id
+    }"
+  >
+    <a routerLink="/{{ cityId }}/{{ cinema.id }}">
+      {{ cinema.name }}
+    </a>
+  </li>
+</ul>

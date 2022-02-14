@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlamoHeaderComponent } from './alamo-header/alamo-header.component';
 import { CinemasComponent } from './cinemas/cinemas.component';
+import { CinemaListComponent } from './cinema-list/cinema-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlamoHeaderComponent,
-    CinemasComponent
+    CinemasComponent,
+    CinemaListComponent
   ],
   imports: [
     BrowserModule,
