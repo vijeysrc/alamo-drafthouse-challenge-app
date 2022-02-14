@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CityDataResolver } from 'src/route.resolver';
 import { CinemasComponent } from './cinemas/cinemas.component';
 
 const routes: Routes = [
-  { path: ':cityId', component: CinemasComponent },
+  { path: ':cityId', component: CinemasComponent, resolve: {
+    cityData: CityDataResolver
+  } },
   { path: ':cityId/:cinemaId', component: CinemasComponent },
   { path: ':cityId/:cinemaId/:filmSlug', component: CinemasComponent },
   { path: '', redirectTo: '/austin', pathMatch: 'full' },

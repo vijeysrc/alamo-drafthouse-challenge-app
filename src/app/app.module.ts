@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AlamoHeaderComponent } from './alamo-header/alamo-header.component';
 import { CinemasComponent } from './cinemas/cinemas.component';
 import { CinemaListComponent } from './cinema-list/cinema-list.component';
+import { CityDataResolver } from 'src/route.resolver';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CinemaListComponent } from './cinema-list/cinema-list.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CityDataResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

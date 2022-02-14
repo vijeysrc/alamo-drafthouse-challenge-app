@@ -3,9 +3,9 @@
     <div class="cmp-cinemas__title">Find a movie</div>
     <div class="cmp-cinemas__sub-title">Select Theater</div>
     <cinema-list
-      [cityId]="cityId"
-      [cinemas]="cinemas"
-      [chosenCinemaId]="cinemaId"
+      [cityId]="dataService.cityId"
+      [cinemas]="dataService.cinemas"
+      [chosenCinemaId]="dataService.cinemaId"
     ></cinema-list>
     <div *ngIf="cinemaId">
       <div class="cmp-cinemas__sub-title">

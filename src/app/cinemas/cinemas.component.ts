@@ -18,7 +18,7 @@ export class CinemasComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService,
+    public dataService: DataService,
     private router: Router) {
       this.router.events.subscribe(() => {
         this.updateWithParams();
@@ -26,7 +26,7 @@ export class CinemasComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getCinemasByCity();
+    //this.getCinemasByCity();
   }
 
   updateWithParams(): void {
@@ -40,7 +40,7 @@ export class CinemasComponent implements OnInit {
   }
 
   getCinemasByCity(): void {
-    this.dataService.getCinemas(this.cityId).subscribe(({cinemas, films, sessions}) => {
+    this.dataService.getCinemas().subscribe(({cinemas, films, sessions}) => {
       this.cinemas = cinemas;
       this.films = films;
       this.sessions = sessions;
