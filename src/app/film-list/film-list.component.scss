@@ -1,0 +1,38 @@
+.cmp-film-list {
+  &__film-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid #090909;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 15px 15px 15px 24px;
+    margin-bottom: 16px;
+    a {
+      text-decoration: none;
+      color: #090909;
+      display: block;
+      width: 100%;
+    }
+
+    svg {
+      height: 38px;
+      width: 18px;
+      fill: #090909;
+    }
+
+    &:hover {
+      background-color: #090909;
+      a {
+        color: #f0b323;
+      }
+
+      svg {
+        fill: #f0b323;
+      }
+    }
+  }
+}

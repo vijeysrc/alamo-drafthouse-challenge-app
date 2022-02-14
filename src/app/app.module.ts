@@ -8,13 +8,15 @@ import { AlamoHeaderComponent } from './alamo-header/alamo-header.component';
 import { CinemasComponent } from './cinemas/cinemas.component';
 import { CinemaListComponent } from './cinema-list/cinema-list.component';
 import { CityDataResolver } from 'src/route.resolver';
+import { FilmListComponent } from './film-list/film-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlamoHeaderComponent,
     CinemasComponent,
-    CinemaListComponent
+    CinemaListComponent,
+    FilmListComponent
   ],
   imports: [
     BrowserModule,
