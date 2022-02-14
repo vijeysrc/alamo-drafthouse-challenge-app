@@ -28,6 +28,8 @@ export class DataService {
   films: IFilm[] = [];
   sessions: ISession[] = [];
 
+  isLoading: boolean = true;
+
   constructor(private http: HttpClient) { }
 
   setCityId(cityId: string) {
@@ -45,6 +47,7 @@ export class DataService {
   setupCityData(cityId: string, cinemaId: string, filmSlug: string): void {
     if (this.cityId !== cityId) {
       this.setCityId(cityId);
+      this.isLoading = true;
       this.getCityData().subscribe(res => this.updateCityData(res));
     }
     this.setCinemaId(cinemaId);
@@ -59,6 +62,8 @@ export class DataService {
     this.cinemas = cinemas;
     this.films = films;
     this.sessions = sessions;
+
+    this.isLoading = false;
   }
 
   getCityData(): Observable<any> {

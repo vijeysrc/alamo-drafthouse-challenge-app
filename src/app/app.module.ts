@@ -10,6 +10,7 @@ import { CinemaListComponent } from './cinema-list/cinema-list.component';
 import { CityDataResolver } from 'src/route.resolver';
 import { FilmListComponent } from './film-list/film-list.component';
 import { ShowComponent } from './show/show.component';
+import { IsLoadingComponent } from './is-loading/is-loading.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ShowComponent } from './show/show.component';
     CinemasComponent,
     CinemaListComponent,
     FilmListComponent,
-    ShowComponent
+    ShowComponent,
+    IsLoadingComponent
   ],
   imports: [
     BrowserModule,
