@@ -10,7 +10,7 @@ import {
   ISimpleFilmItem
 } from '../interfaces'
 
-const getBaseUrl = (city: String) => '/assets/data/mock.json' // `https://drafthouse.com/s/mother/v1/page/market/main/${city}`
+const getBaseUrl = (city: String) => `https://drafthouse.com/s/mother/v1/page/market/main/${city}`
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -44,9 +44,9 @@ export class DataService {
 
   setupCityData(cityId: string, cinemaId: string, filmSlug: string): void {
     if (this.cityId !== cityId) {
+      this.setCityId(cityId);
       this.getCityData().subscribe(res => this.updateCityData(res));
     }
-    this.setCityId(cityId);
     this.setCinemaId(cinemaId);
     this.setFilmSlug(filmSlug);
   }
