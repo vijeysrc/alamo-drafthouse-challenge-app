@@ -30,11 +30,11 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   setCityId(cityId: string) {
-    this.cityId = cityId
+    this.cityId = cityId;
   }
 
   setCinemaId(cinemaId: string = '') {
-    this.cinemaId = cinemaId
+    this.cinemaId = cinemaId;
   }
 
   setFilmSlug(filmSlug: string = '') {
@@ -63,6 +63,12 @@ export class DataService {
   getCityData(): Observable<any> {
     const url = getBaseUrl(this.cityId)
     return this.http.get(url, httpOptions)
+  }
+
+  getCinemaNameById(id: string): string {
+    const cinema: undefined | ICinema = this.cinemas.find(cinema => cinema.id === id)
+    if (cinema) return cinema.name
+    return ""
   }
 
   getCinemas(): Observable<ICity> {

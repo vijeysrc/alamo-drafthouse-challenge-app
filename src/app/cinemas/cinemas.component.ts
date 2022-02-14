@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { ICinema, IFilm, ISimpleFilmItem, ISession } from 'src/interfaces';
@@ -8,7 +8,7 @@ import { ICinema, IFilm, ISimpleFilmItem, ISession } from 'src/interfaces';
   templateUrl: './cinemas.component.html',
   styleUrls: ['./cinemas.component.scss']
 })
-export class CinemasComponent implements OnInit {
+export class CinemasComponent{
   cinemas: ICinema[] = [];
   films: IFilm[] = [];
   sessions: ISession[] = [];
@@ -16,36 +16,7 @@ export class CinemasComponent implements OnInit {
   cinemaId: string = '';
   filmSlug: string = '';
 
-  constructor(
-    private route: ActivatedRoute,
-    public dataService: DataService,
-    private router: Router) {
-      this.router.events.subscribe(() => {
-        this.updateWithParams();
-      })
-    }
-
-  ngOnInit(): void {
-    //this.getCinemasByCity();
-  }
-
-  updateWithParams(): void {
-    const cityId = this.route.snapshot.paramMap.get('cityId') as string;
-    const cinemaId = this.route.snapshot.paramMap.get('cinemaId') as string;
-    const filmSlug = this.route.snapshot.paramMap.get('filmSlug') as string;
-
-    this.cityId = cityId;
-    this.cinemaId = cinemaId;
-    this.filmSlug = filmSlug;
-  }
-
-  getCinemasByCity(): void {
-    this.dataService.getCinemas().subscribe(({cinemas, films, sessions}) => {
-      this.cinemas = cinemas;
-      this.films = films;
-      this.sessions = sessions;
-    })
-  }
+  constructor(public dataService: DataService) {}
 
   getCinemaNameById(id: string): string {
     const cinema: undefined | ICinema = this.cinemas.find(cinema => cinema.id === id)

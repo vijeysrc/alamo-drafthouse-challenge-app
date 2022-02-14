@@ -7,7 +7,9 @@ const routes: Routes = [
   { path: ':cityId', component: CinemasComponent, resolve: {
     cityData: CityDataResolver
   } },
-  { path: ':cityId/:cinemaId', component: CinemasComponent },
+  { path: ':cityId/:cinemaId', component: CinemasComponent, resolve: {
+    cityData: CityDataResolver
+  } },
   { path: ':cityId/:cinemaId/:filmSlug', component: CinemasComponent },
   { path: '', redirectTo: '/austin', pathMatch: 'full' },
 ];

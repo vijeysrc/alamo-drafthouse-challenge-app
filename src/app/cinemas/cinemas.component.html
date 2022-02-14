@@ -7,10 +7,12 @@
       [cinemas]="dataService.cinemas"
       [chosenCinemaId]="dataService.cinemaId"
     ></cinema-list>
-    <div *ngIf="cinemaId">
+    <div *ngIf="dataService.cinemaId">
       <div class="cmp-cinemas__sub-title">
         Films playing at
-        <span class="fw-bold">{{ getCinemaNameById(cinemaId) }}</span>
+        <span class="fw-bold">{{
+          dataService.getCinemaNameById(dataService.cinemaId)
+        }}</span>
       </div>
       <ul class="list-unstyled">
         <li
