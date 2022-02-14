@@ -4,14 +4,28 @@ import { CityDataResolver } from 'src/route.resolver';
 import { CinemasComponent } from './cinemas/cinemas.component';
 
 const routes: Routes = [
-  { path: ':cityId', component: CinemasComponent, resolve: {
-    cityData: CityDataResolver
-  } },
-  { path: ':cityId/:cinemaId', component: CinemasComponent, resolve: {
-    cityData: CityDataResolver
-  } },
-  { path: ':cityId/:cinemaId/:filmSlug', component: CinemasComponent },
-  { path: '', redirectTo: '/austin', pathMatch: 'full' },
+  {
+    path: ":cityId",
+    component: CinemasComponent,
+    resolve: {
+      cityData: CityDataResolver,
+    },
+  },
+  {
+    path: ":cityId/:cinemaId",
+    component: CinemasComponent,
+    resolve: {
+      cityData: CityDataResolver,
+    },
+  },
+  {
+    path: ":cityId/:cinemaId/:filmSlug",
+    component: CinemasComponent,
+    resolve: {
+      cityData: CityDataResolver,
+    },
+  },
+  { path: "", redirectTo: "/austin", pathMatch: "full" },
 ];
 
 @NgModule({
