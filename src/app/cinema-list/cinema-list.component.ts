@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ICinema } from 'src/interfaces';
+import { Component } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'cinema-list',
@@ -7,9 +7,5 @@ import { ICinema } from 'src/interfaces';
   styleUrls: ['./cinema-list.component.scss']
 })
 export class CinemaListComponent {
-  @Input() cityId: string = '';
-  @Input() cinemas: ICinema[] = [];
-  @Input() chosenCinemaId: string = '';
-
-  constructor() { }
+  constructor(public ds: DataService) {}
 }

@@ -2,11 +2,7 @@
   <div *ngIf="!dataService.filmSlug" class="cmp-cinemas__contents">
     <div class="cmp-cinemas__title">Find a movie</div>
     <div class="cmp-cinemas__sub-title">Select Theater</div>
-    <cinema-list
-      [cityId]="dataService.cityId"
-      [cinemas]="dataService.cinemas"
-      [chosenCinemaId]="dataService.cinemaId"
-    ></cinema-list>
+    <cinema-list></cinema-list>
     <div *ngIf="dataService.cinemaId">
       <div class="cmp-cinemas__sub-title">
         Films playing at
