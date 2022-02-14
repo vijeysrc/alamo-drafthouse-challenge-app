@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CityDataResolver } from 'src/route.resolver';
 import { CinemasComponent } from './cinemas/cinemas.component';
+import { ShowComponent } from './show/show.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: ":cityId/:cinemaId/:filmSlug",
-    component: CinemasComponent,
+    component: ShowComponent,
     resolve: {
       cityData: CityDataResolver,
     },

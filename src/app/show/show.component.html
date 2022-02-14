@@ -1,0 +1,41 @@
+<div class="cmp-cinemas">
+  <div class="cmp-cinemas__contents">
+    <div class="cmp-cinemas__title">Find a show time</div>
+    <div class="cmp-cinemas__sub-title">
+      Choose a time for
+      <span class="fw-bold">{{ ds.getFilmNameByFilmSlug(ds.filmSlug) }}</span>
+      at
+      <span class="fw-bold">{{ ds.getCinemaNameById(ds.cinemaId) }}</span>
+    </div>
+    <img
+      *ngIf="ds.getFilmImageByFilmSlug(ds.filmSlug)"
+      src="{{ ds.getFilmImageByFilmSlug(ds.filmSlug) }}"
+      width="100%"
+      height="100%"
+      style="margin-bottom: 36px"
+    />
+    <ul class="list-unstyled">
+      <li
+        class="cmp-show-item"
+        *ngFor="
+          let showTimeInfo of ds.getSessionByCinemaIdFilmSlug(
+            ds.cinemaId,
+            ds.filmSlug
+          )
+        "
+      >
+        <div class="fw-bold text-center">
+          {{ showTimeInfo.businessDateClt }}
+        </div>
+        <hr />
+        <ul class="list-unstyled mb-5">
+          <li *ngFor="let showItem of showTimeInfo.data" class="mb-3">
+            <span class="fw-bold">Screen Number:</span>
+            {{ showItem.screenNumber }} <span class="fw-bold">at</span>
+            {{ showItem.showTimeClt.split("T")[1] }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

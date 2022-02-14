@@ -9,6 +9,7 @@ import { CinemasComponent } from './cinemas/cinemas.component';
 import { CinemaListComponent } from './cinema-list/cinema-list.component';
 import { CityDataResolver } from 'src/route.resolver';
 import { FilmListComponent } from './film-list/film-list.component';
+import { ShowComponent } from './show/show.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FilmListComponent } from './film-list/film-list.component';
     AlamoHeaderComponent,
     CinemasComponent,
     CinemaListComponent,
-    FilmListComponent
+    FilmListComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,
