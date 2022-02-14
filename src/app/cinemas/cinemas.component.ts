@@ -7,5 +7,5 @@ import { DataService } from '../data.service';
   styleUrls: ['./cinemas.component.scss']
 })
 export class CinemasComponent{
-  constructor(public dataService: DataService) {}
+  constructor(public ds: DataService) {}
 }
